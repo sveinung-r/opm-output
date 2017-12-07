@@ -412,6 +412,23 @@ BOOST_AUTO_TEST_CASE(well_keywords) {
     BOOST_CHECK_CLOSE( 0.2, ecl_sum_get_well_var( resp, 1, "W_1", "WTHPH" ), 1e-5 );
     BOOST_CHECK_CLOSE( 1.2, ecl_sum_get_well_var( resp, 1, "W_2", "WTHPH" ), 1e-5 );
     BOOST_CHECK_CLOSE( 2.2, ecl_sum_get_well_var( resp, 1, "W_3", "WTHPH" ), 1e-5 );
+
+    /* Control data should not be outputed as historic data */
+    BOOST_CHECK_CLOSE(0.0, ecl_sum_get_well_var( resp, 1, "W_4", "WTHPH" ), 1e-5);
+    BOOST_CHECK_CLOSE(0.0, ecl_sum_get_well_var( resp, 1, "W_4", "WBHPH" ), 1e-5);
+    BOOST_CHECK_CLOSE(0.0, ecl_sum_get_well_var( resp, 1, "W_4", "WWPRH" ), 1e-5);
+    BOOST_CHECK_CLOSE(0.0, ecl_sum_get_well_var( resp, 1, "W_4", "WOPRH" ), 1e-5);
+    BOOST_CHECK_CLOSE(0.0, ecl_sum_get_well_var( resp, 1, "W_4", "WGPRH" ), 1e-5);
+    BOOST_CHECK_CLOSE(0.0, ecl_sum_get_well_var( resp, 1, "W_4", "WWPTH" ), 1e-5);
+    BOOST_CHECK_CLOSE(0.0, ecl_sum_get_well_var( resp, 1, "W_4", "WOPTH" ), 1e-5);
+    BOOST_CHECK_CLOSE(0.0, ecl_sum_get_well_var( resp, 1, "W_4", "WGPTH" ), 1e-5);
+    BOOST_CHECK_CLOSE(0.0, ecl_sum_get_well_var( resp, 1, "W_4", "WTHPH" ), 1e-5);
+    BOOST_CHECK_CLOSE(0.0, ecl_sum_get_well_var( resp, 1, "W_4", "WBHPH" ), 1e-5);
+
+    //BOOST_CHECK_CLOSE(0.0, ecl_sum_get_well_var( resp, 1, "W_5", "WWIRH" ), 1e-5);
+    //BOOST_CHECK_CLOSE(0.0, ecl_sum_get_well_var( resp, 1, "W_5", "WGIRH" ), 1e-5);
+    //BOOST_CHECK_CLOSE(0.0, ecl_sum_get_well_var( resp, 1, "W_5", "WWITH" ), 1e-5);
+    //BOOST_CHECK_CLOSE(0.0, ecl_sum_get_well_var( resp, 1, "W_5", "WGITH" ), 1e-5);
 }
 
 BOOST_AUTO_TEST_CASE(group_keywords) {

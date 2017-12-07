@@ -313,7 +313,9 @@ inline quantity production_history( const fn_args& args ) {
 
     double sum = 0.0;
     for( const Well* sched_well : args.schedule_wells )
-        sum += sched_well->production_rate( phase, timestep );
+
+        if ( !sched_well->getProductionProperties(timestep).predictionMode )
+            sum += sched_well->production_rate( phase, timestep );
 
     return { sum, rate_unit< phase >() };
 }
@@ -326,7 +328,9 @@ inline quantity injection_history( const fn_args& args ) {
 
     double sum = 0.0;
     for( const Well* sched_well : args.schedule_wells )
-        sum += sched_well->injection_rate( phase, timestep );
+
+        if ( !sched_well->getInjectionProperties(timestep).predictionMode )
+            sum += sched_well->injection_rate( phase, timestep );
 
     return { sum, rate_unit< phase >() };
 }
