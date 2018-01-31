@@ -75,4 +75,5 @@ list (APPEND TEST_DATA_FILES
         tests/testrft.DATA
         tests/table_deck.DATA
         tests/summary_deck_non_constant_porosity.DATA
+        tests/summary_eff_fac.DATA
     )
